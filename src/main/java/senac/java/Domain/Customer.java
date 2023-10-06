@@ -1,6 +1,6 @@
 package senac.java.Domain;
 
-public class Users {
+public class Customer {
     int id = 0;
     public static String name = "";
     public static String lastName = "";

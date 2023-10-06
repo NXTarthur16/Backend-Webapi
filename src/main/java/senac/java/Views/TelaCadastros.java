@@ -2,7 +2,7 @@ package senac.java.Views;
 
 import senac.java.Domain.Product;
 import senac.java.Domain.Salesperson;
-import senac.java.Domain.Users;
+import senac.java.Domain.Customer;
 import senac.java.Services.Roteamento;
 
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TelaCadastros {
 
     static Scanner sc = new Scanner(System.in);
-    static Users cliente = new Users();
+    static Customer cliente = new Customer();
     static Salesperson vendedor = new Salesperson();
     static Product produto = new Product();
 

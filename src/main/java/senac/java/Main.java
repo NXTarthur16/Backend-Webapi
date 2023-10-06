@@ -13,6 +13,5 @@ public class Main {
 
         telas.telaInicial();
         server.apiserver();
-
     }
 }
