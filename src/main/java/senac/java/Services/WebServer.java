@@ -18,10 +18,10 @@ public class WebServer {
 
     public void apiserver() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-
+        // localhost...
         server.createContext("/api/cliente", new ClienteHandler());
-        server.createContext("api/vendedor", new VendedorHandler());
-        server.createContext("api/produto", new ProdutoHandler());
+        server.createContext("/api/vendedor", new VendedorHandler());
+        server.createContext("/api/produto", new ProdutoHandler());
 
         server.setExecutor(null);
         System.out.println("Servidor iniciado");
@@ -60,7 +60,7 @@ public class WebServer {
         @Override
         public void handle(HttpExchange exchange) throws IOException{
 
-            String response = "Essa e a rota de vendedor";
+            String response = "Essa e a rota de Produto";
             enviarResponse(exchange, response);
         }
     }
