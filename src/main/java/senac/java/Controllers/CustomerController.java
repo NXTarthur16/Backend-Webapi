@@ -1,0 +1,38 @@
+package senac.java.Controllers;
+
+import com.sun.net.httpserver.HttpHandler; // Receber a requisicao e programar ela (cuida da parte de ir de la para cá(abre os caminhos))
+import com.sun.net.httpserver.HttpExchange; // Envia a requisicao do Front para o Back (e esse passa pelos caminhos)
+import senac.java.Services.ResponseEndPoints;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+public class CustomerController {
+    static ResponseEndPoints res = new ResponseEndPoints();
+
+    public static class ClienteHandler implements HttpHandler {
+        @Override // criar metodo de novo e forçar a usar esse criado(modifica o que existe)
+        public void handle(HttpExchange exchange) throws IOException {
+
+            String response = "";
+
+            if("GET".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de Cliente - GET";
+                res.enviarResponse(exchange, response);
+            }else if("POST".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de Cliente - POST";
+                res.enviarResponse(exchange, response);
+            }else if("PUT".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de Cliente - PUT";
+                res.enviarResponse(exchange, response);
+            }else if("DELETE".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de Cliente - DELETE";
+                res.enviarResponse(exchange, response);
+            }else{
+                response = "Essa e a rota de Cliente - UNDEFINED";
+//                response = "Essa e a rota de Cliente - UNDEFINED" + " O metodo utilizado foi: " + exchange.getRequestMethod();
+                res.enviarResponse(exchange, response);
+            }
+        }
+    }
+}
