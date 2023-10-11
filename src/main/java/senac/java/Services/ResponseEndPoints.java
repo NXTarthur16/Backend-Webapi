@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class ResponseEndPoints {
-    public static void enviarResponse(HttpExchange exchange, String response) throws IOException {
+    public static void enviarResponse(HttpExchange exchange, String response, Integer statusCode) throws IOException {
 
         exchange.getResponseHeaders().set("Content-Type", "text/plain");
 
-        exchange.sendResponseHeaders(200, response.getBytes("UTF-8").length);
+        exchange.sendResponseHeaders(statusCode, response.getBytes("UTF-8").length);
 
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());

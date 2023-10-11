@@ -1,16 +1,28 @@
 package senac.java.Domain;
 
+import org.json.JSONObject;
 public class Customer {
+
     int id = 0;
     public static String name = "";
     public static String lastName = "";
     public static int age = 0;
     public static String address = "";
-    public static String userEmail = "";
+    public static String email = "";
     public static String password = "";
-    public static String userCpf = "";
+    public static String cpf = "";
 
     public Customer(){
+    }
+
+    public Customer(String name, String lastName, int age, String Address, String email, String password, String cpf){
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+        this.cpf = cpf;
     }
 
     public String getName(){
@@ -25,7 +37,7 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(String name){
+    public void setLastName(String lastName){
         this.lastName = lastName;
     }
 
@@ -33,7 +45,7 @@ public class Customer {
         return age;
     }
 
-    public void setAge(String name){
+    public void setAge(int age){
         this.age = age;
     }
 
@@ -41,32 +53,46 @@ public class Customer {
         return address;
     }
 
-    public void setAddress(String name){
+    public void setAddress(String address){
         this.address = address;
     }
 
-    public String getUserEmail(){
-        return userEmail;
+    public String getEmail(){
+        return email;
     }
 
-    public void setUserEmail(String name){
-        this.userEmail = userEmail;
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public String getPassword(){
         return password;
     }
 
-    public void setPassword(String name){
+    public void setPassword(String password){
         this.password = password;
     }
 
-    public String getUserCpf(){
-        return userCpf;
+    public String getCpf(){
+
+        return cpf;
     }
 
-    public void setUserCpf(String name){
-        this.userCpf = userCpf;
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
+    public JSONObject toJson(){
+        JSONObject json = new JSONObject();
+
+        json.put("name", name);
+        json.put("lastName", lastName);
+        json.put("age", age);
+        json.put("address", address);
+        json.put("email", email);
+        json.put("password", password);
+        json.put("cpf", cpf);
+
+        return json;
+    }
 }
