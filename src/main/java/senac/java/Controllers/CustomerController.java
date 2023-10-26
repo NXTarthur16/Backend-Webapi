@@ -23,7 +23,7 @@ public class CustomerController {
 
             if ("GET".equals(exchange.getRequestMethod())){
                 response = "Essa e a rota de Cliente - GET";
-                res.enviarResponse(exchange, response,200);
+                res.enviarResponse(exchange, response, 200);
             }else if ("POST".equals(exchange.getRequestMethod())){
 //                response = "Essa e a rota de Cliente - POST";
 //                res.enviarResponse(exchange, response,200);
@@ -46,24 +46,23 @@ public class CustomerController {
 
                     response = "Dados recebidos com sucesso";
 
-//                    res.enviarResponse(exchange, response, 201);
-                    res.enviarResponseJson(exchange, user.toJson());
+                   res.enviarResponse(exchange, response, 200);
 
                 } catch(Exception e){
                     String resposta = e.toString();
-                    res.enviarResponse(exchange, resposta,405);
+                    res.enviarResponse(exchange, resposta, 200);
                     System.out.println("O erro foi" + e);
                 }
 
             }else if ("PUT".equals(exchange.getRequestMethod())){
                 response = "Essa e a rota de Cliente - PUT";
-                res.enviarResponse(exchange, response,200);
+                res.enviarResponse(exchange, response, 200);
             }else if ("DELETE".equals(exchange.getRequestMethod())){
                 response = "Essa e a rota de Cliente - DELETE";
-                res.enviarResponse(exchange, response,200);
+                res.enviarResponse(exchange, response, 200);
             }else {
                 response = "Essa e a rota de Cliente - UNDEFINED";
-                res.enviarResponse(exchange, response,200);
+                res.enviarResponse(exchange, response, 200);
             }
         }
     }

@@ -12,6 +12,6 @@ public class Main {
         WebServer server = new WebServer();
 
         telas.telaInicial();
-        server.apiserver();
+        server.apiServer();
     }
 }

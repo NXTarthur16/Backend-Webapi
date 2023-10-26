@@ -1,64 +1,138 @@
 package senac.java.Domain;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Salesperson {
     int id = 0;
-    public String nome = "";
-    public String ultimoNome = "";
+    public String name = "";
+    public String lastName = "";
     public String phoneNumber = "";
-    public String salesPersonCpf = "";
-    public String salesPersonEmail = "";
-    public String salesPersonAddress = "";
+    public String cpf = "";
+    public String email = "";
+    public String address = "";
 
-    public Store store;
+    public Salesperson(){
 
-    public Salesperson() {
     }
 
-    public String getNome() {
-        return nome;
+    public Salesperson(String name, String lastName, String phoneNumber, String cpf, String email, String address){
+
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.cpf = cpf;
+        this.email = email;
+        this.address = address;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getName(){
+        return name;
     }
 
-    public String getUltimoNome() {
-        return ultimoNome;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public void setUltimoNome(String ultimoNome) {
-        this.ultimoNome = ultimoNome;
+    public String getLastName(){
+        return lastName;
     }
 
-    public String getPhoneNumber() {
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber(){
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
 
-    public String getSalesPersonCpf() {
-        return salesPersonCpf;
+    public String getCpf(){
+        return cpf;
     }
 
-    public void setSalesPersonCpf(String salesPersonCpf) {
-        this.salesPersonCpf = salesPersonCpf;
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
-    public String getSalesPersonEmail() {
-        return salesPersonEmail;
+    public String getEmail(){
+        return email;
     }
 
-    public void setSalesPersonEmail(String salesPersonEmail) {
-        this.salesPersonEmail = salesPersonEmail;
+    public void setEmail(String email){
+        this.email = email;
     }
 
-    public String getSalesPersonAddress() {
-        return salesPersonAddress;
+    public String getAddress(){
+        return address;
     }
 
-    public void setSalesPersonAddress(String salesPersonAddress) {
-        this.salesPersonAddress = salesPersonAddress;
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public JSONObject toJson(){
+        JSONObject json = new JSONObject();
+
+        json.put("name", name);
+        json.put("lastName", lastName);
+        json.put("phoneNumber", phoneNumber);
+        json.put("cpf", cpf);
+        json.put("email", email);
+        json.put("address", address);
+
+        return json;
+    }
+
+    public JSONObject arrayToJson(List<Salesperson> salespersonList) {
+        JSONObject json = new JSONObject();
+
+        if (!salespersonList.isEmpty()) {
+            var keyJson = 1;
+
+            for (Salesperson salesperson : salespersonList) {
+
+                JSONObject jsonFor = new JSONObject();
+
+                jsonFor.put("name", salesperson.getName());
+                jsonFor.put("lastName", salesperson.getLastName());
+                jsonFor.put("cpf", salesperson.getCpf());
+                jsonFor.put("email", salesperson.getEmail());
+                jsonFor.put("phoneNumber", salesperson.getPhoneNumber());
+                jsonFor.put("address", salesperson.getAddress());
+
+                json.put(String.valueOf(keyJson), jsonFor);
+
+                keyJson++;
+
+            }
+            return json;
+        }
+
+        else{
+
+            return null;
+        }
+    }
+
+    public static Salesperson getSalesperson(int index, List<Salesperson> salespersonList){
+
+        if(index >= 0 && index < salespersonList.size())  {
+
+            return salespersonList.get(index);
+        }
+
+        else{
+            return null;
+        }
+    }
+
+    public static List<Salesperson> getAllSalesperson(List<Salesperson> salespersonList){
+        return salespersonList;
     }
 }

@@ -24,30 +24,30 @@ public class TelaCadastros {
         System.out.println("Preencha corretamente os dados abaixo: ");
         System.out.println(" ");
         System.out.println("Digite o seu primeiro nome");
-        vendedor.nome = sc.nextLine();
+        vendedor.name = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu sobrenome");
-        vendedor.ultimoNome = sc.nextLine();
+        vendedor.lastName = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu telefone");
         vendedor.phoneNumber = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu CPF");
-        vendedor.salesPersonCpf = sc.nextLine();
+        vendedor.cpf = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu endereço de email");
-        vendedor.salesPersonEmail = sc.nextLine();
+        vendedor.email = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu endereço completo");
-        vendedor.salesPersonAddress = sc.nextLine();
+        vendedor.address = sc.nextLine();
         System.out.println(" ");
 
         System.out.println("Cadastro de vendedor realizado com sucesso:");
-        System.out.println("Nome: " + vendedor.nome + " " + vendedor.ultimoNome);
+        System.out.println("Nome: " + vendedor.name + " " + vendedor.lastName);
         System.out.println("Telefone: " + vendedor.phoneNumber);
-        System.out.println("CPF: " + vendedor.salesPersonCpf);
-        System.out.println("E-mail: " + vendedor.salesPersonEmail);
-        System.out.println("Endereço: " + vendedor.salesPersonAddress);
+        System.out.println("CPF: " + vendedor.cpf);
+        System.out.println("E-mail: " + vendedor.email);
+        System.out.println("Endereço: " + vendedor.address);
 
         rota.rotasReturn(resposta);
     }
@@ -71,21 +71,21 @@ public class TelaCadastros {
         cliente.address = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu endereço de email");
-        cliente.userEmail = sc.nextLine();
+        cliente.email = sc.nextLine();
         System.out.println(" ");
         System.out.println("Defina a sua senha");
         cliente.password = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu CPF");
-        cliente.userCpf = sc.nextLine();
+        cliente.cpf = sc.nextLine();
         System.out.println(" ");
 
         System.out.println("Cadastro de cliente realizado com sucesso:");
         System.out.println("Nome: " + cliente.name + " " + cliente.lastName);
         System.out.println("Idade: " + cliente.age);
         System.out.println("Endereço: " + cliente.address);
-        System.out.println("E-mail: " + cliente.userEmail);
-        System.out.println("CPF: " + cliente.userCpf);
+        System.out.println("E-mail: " + cliente.email);
+        System.out.println("CPF: " + cliente.cpf);
 
         rota.rotasReturn(resposta);
     }

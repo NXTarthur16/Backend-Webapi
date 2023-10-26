@@ -1,38 +1,45 @@
 package senac.java.Controllers;
 
-import com.sun.net.httpserver.HttpHandler; // Receber a requisicao e programar ela (cuida da parte de ir de la para cá(abre os caminhos))
-import com.sun.net.httpserver.HttpExchange; // Envia a requisicao do Front para o Back (e esse passa pelos caminhos)
-import senac.java.Services.ResponseEndPoints;
-import org.json.JSONObject;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 
-public class ProductController {
-    static ResponseEndPoints res = new ResponseEndPoints();
+import senac.java.Services.ResponseEndPoints;
 
-    public static class ProdutoHandler implements HttpHandler {
+import org.json.JSONObject;
+public class ProductController {
+
+    public static ResponseEndPoints res = new ResponseEndPoints();
+    public static class ProductsHandler implements HttpHandler {
+
         @Override
         public void handle(HttpExchange exchange) throws IOException {
 
             String response = "";
 
-            if("GET".equals(exchange.getRequestMethod())){
-                response = "Essa e a rota de Produto - GET";
-                res.enviarResponse(exchange, response);
-            }else if("POST".equals(exchange.getRequestMethod())){
-                response = "Essa e a rota de Produto - POST";
-                res.enviarResponse(exchange, response);
-            }else if("PUT".equals(exchange.getRequestMethod())){
-                response = "Essa e a rota de Produto - PUT";
-                res.enviarResponse(exchange, response);
-            }else if("DELETE".equals(exchange.getRequestMethod())){
-                response = "Essa e a rota de Produto - DELETE";
-                res.enviarResponse(exchange, response);
-            }else{
-                response = "Essa e a rota de Produto - UNDEFINED";
-//                response = "Essa e a rota de Produto - UNDEFINED" + " O metodo utilizado foi: " + exchange.getRequestMethod();
-                res.enviarResponse(exchange, response);
+
+            if ("GET".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de produtos - GET";
+                res.enviarResponse(exchange, response, 200);
+            }
+            else if ("POST".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de produtos - POST";
+                res.enviarResponse(exchange, response, 200);
+            }
+            else if ("PUT".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de produtos - PUT";
+                res.enviarResponse(exchange, response, 200);
+            }
+            else if ("DELETE".equals(exchange.getRequestMethod())){
+                response = "Essa e a rota de produtos - DELETE";
+                res.enviarResponse(exchange, response, 200);
+            }
+
+            else {
+                response = "nao definido." + "O metodo utilizado foi: " + exchange.getRequestMethod() + " So aceitamos get, put, post e delete";
+                res.enviarResponse(exchange, response, 200);
             }
         }
-    }
+}
 }
