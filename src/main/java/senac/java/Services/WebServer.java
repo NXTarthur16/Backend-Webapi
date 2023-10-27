@@ -7,8 +7,7 @@ import com.sun.net.httpserver.HttpServer; // Criar um servidor
 
 import senac.java.Controllers.CustomerController;
 import senac.java.Controllers.ProductController;
-import senac.java.Controllers.SalesPersonController;
-import senac.java.Domain.Customer;
+import senac.java.Controllers.SalesController;
 
 import java.io.IOException; //
 import java.net.InetSocketAddress; //
@@ -23,12 +22,12 @@ public class WebServer {
                 0);
 
         HttpHandler userHandler = new CustomerController.ClienteHandler();
-        HttpHandler salesPersonHandler = new SalesPersonController.SalesPersonHandler();
+        HttpHandler salesHandler = new SalesController.SalesHandler();
         HttpHandler productHandler = new ProductController.ProductsHandler();
 
-        server.createContext("/api/vendedor", exchange -> {
+        server.createContext("/api/vendas", exchange -> {
             configureCors(exchange);
-            salesPersonHandler.handle(exchange);
+            salesHandler.handle(exchange);
         });
         server.createContext("/api/usuario",  exchange -> {
             configureCors(exchange);

@@ -6,7 +6,7 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 
-import senac.java.Domain.Salesperson;
+import senac.java.Domain.Sales;
 import senac.java.Services.ResponseEndPoints;
 
 import java.util.ArrayList;
@@ -14,12 +14,12 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-public class SalesPersonController {
+public class SalesController {
 
     static ResponseEndPoints res = new ResponseEndPoints();
 
-    private static List<Salesperson> salespersonList = new ArrayList<>();
-    public static class SalesPersonHandler implements HttpHandler {
+    private static List<Sales> salesList = new ArrayList<>();
+    public static class SalesHandler implements HttpHandler {
 
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -28,27 +28,24 @@ public class SalesPersonController {
 
             if ("GET".equals(exchange.getRequestMethod())){
 
-                List<Salesperson> getAllFromArray = Salesperson.getAllSalesperson(salespersonList);
+                List<Sales> getAllFromArray = Sales.getAllSales(salesList);
 
                 if(!getAllFromArray.isEmpty()){
 
-                    Salesperson salesperson = new Salesperson();
+                    Sales sales = new Sales();
 
-                    for(Salesperson salespersonJson : getAllFromArray){
-                        System.out.println("Name: " + salespersonJson.getName());
-                        System.out.println("Last Name: " + salespersonJson.getLastName());
-                        System.out.println("Cpf" + salespersonJson.getCpf());
-                        System.out.println("Email: " + salespersonJson.getEmail());
-                        System.out.println("Número de telefone: " + salespersonJson.getPhoneNumber());
-                        System.out.println("Address: " + salespersonJson.getAddress());
+                    for(Sales salesJson : getAllFromArray){
+                        System.out.println("Imagem 1: " + salesJson.getImage());
+                        System.out.println("Titulo: " + salesJson.getTitulo());
+                        System.out.println("Subtitulo: " + salesJson.getSubtitulo());
                         System.out.println("");
                     }
 
                     System.out.println("getallfromarray"+getAllFromArray);
-                    System.out.println("salespersonList"+salespersonList);
+                    System.out.println("salesList"+salesList);
 
                     response = "Dados encontrados com sucesso";
-                    res.enviarResponseJson(exchange, salesperson.arrayToJson(getAllFromArray), 201);
+                    res.enviarResponseJson(exchange, sales.arrayToJson(getAllFromArray), 201);
                 }
 
                 else{
@@ -61,18 +58,15 @@ public class SalesPersonController {
                 try(InputStream requestBody = exchange.getRequestBody()){
                     JSONObject json = new JSONObject(new String(requestBody.readAllBytes()));
 
-                    Salesperson salesperson = new Salesperson(
-                            json.getString("name"),
-                            json.getString("lastName"),
-                            json.getString("phoneNumber"),
-                            json.getString("cpf"),
-                            json.getString("email"),
-                            json.getString("address")
+                    Sales sales = new Sales(
+                            json.getString("image"),
+                            json.getString("titulo"),
+                            json.getString("subtitulo")
                     );
 
-                    salespersonList.add(salesperson);
+                    salesList.add(sales);
 
-                    res.enviarResponseJson(exchange, salesperson.toJson(), 200);
+                    res.enviarResponseJson(exchange, sales.toJson(), 200);
                 }catch(Exception e){
                     response = e.toString();
 

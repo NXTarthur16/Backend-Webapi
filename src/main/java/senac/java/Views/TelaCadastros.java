@@ -1,7 +1,7 @@
 package senac.java.Views;
 
 import senac.java.Domain.Product;
-import senac.java.Domain.Salesperson;
+import senac.java.Domain.Sales;
 import senac.java.Domain.Customer;
 import senac.java.Services.Roteamento;
 
@@ -11,7 +11,7 @@ public class TelaCadastros {
 
     static Scanner sc = new Scanner(System.in);
     static Customer cliente = new Customer();
-    static Salesperson vendedor = new Salesperson();
+    static Sales vendedor = new Sales();
     static Product produto = new Product();
 
     static String resposta = "";
@@ -19,35 +19,24 @@ public class TelaCadastros {
 
     public static void cadastroVendedor() {
 
-        System.out.println("Bem vindo ao cadastro de vendedor");
+        System.out.println("Bem vindo ao cadastro de vendas");
         System.out.println(" ");
         System.out.println("Preencha corretamente os dados abaixo: ");
         System.out.println(" ");
-        System.out.println("Digite o seu primeiro nome");
-        vendedor.name = sc.nextLine();
+        System.out.println("Digite a sua imagem");
+        vendedor.image = sc.nextLine();
         System.out.println(" ");
-        System.out.println("Digite o seu sobrenome");
-        vendedor.lastName = sc.nextLine();
+        System.out.println("Digite a sua imagem");
+        vendedor.titulo = sc.nextLine();
         System.out.println(" ");
-        System.out.println("Digite o seu telefone");
-        vendedor.phoneNumber = sc.nextLine();
-        System.out.println(" ");
-        System.out.println("Digite o seu CPF");
-        vendedor.cpf = sc.nextLine();
-        System.out.println(" ");
-        System.out.println("Digite o seu endereço de email");
-        vendedor.email = sc.nextLine();
-        System.out.println(" ");
-        System.out.println("Digite o seu endereço completo");
-        vendedor.address = sc.nextLine();
+        System.out.println("Digite a sua imagem");
+        vendedor.subtitulo = sc.nextLine();
         System.out.println(" ");
 
-        System.out.println("Cadastro de vendedor realizado com sucesso:");
-        System.out.println("Nome: " + vendedor.name + " " + vendedor.lastName);
-        System.out.println("Telefone: " + vendedor.phoneNumber);
-        System.out.println("CPF: " + vendedor.cpf);
-        System.out.println("E-mail: " + vendedor.email);
-        System.out.println("Endereço: " + vendedor.address);
+        System.out.println("Cadastro de vendas realizado com sucesso:");
+        System.out.println("Nome: " + vendedor.image);
+        System.out.println("Sobrenome: " + vendedor.titulo);
+        System.out.println("Telefone: " + vendedor.subtitulo);
 
         rota.rotasReturn(resposta);
     }

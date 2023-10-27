@@ -1,8 +1,10 @@
 package senac.java.Domain;
 
 import org.json.JSONObject;
-public class Customer {
 
+import java.util.List;
+
+public class Customer {
     int id = 0;
     public static String name = "";
     public static String lastName = "";
@@ -15,7 +17,10 @@ public class Customer {
     public Customer(){
     }
 
-    public Customer(String name, String lastName, int age, String Address, String email, String password, String cpf){
+    public Customer(String name, String lastName, int age,
+                    String address, String email, String password,
+                    String cpf){
+
         this.name = name;
         this.lastName = lastName;
         this.age = age;
@@ -94,5 +99,50 @@ public class Customer {
         json.put("cpf", cpf);
 
         return json;
+    }
+
+    public JSONObject arrayToJson(List<Customer> customerList) {
+        JSONObject json = new JSONObject();
+
+        if (!customerList.isEmpty()) {
+            var keyJson = 1;
+
+            for (Customer customer : customerList) {
+
+                JSONObject jsonFor = new JSONObject();
+
+                jsonFor.put("name", customer.getName());
+                jsonFor.put("lastName", customer.getLastName());
+                jsonFor.put("age", customer.getAge());
+                jsonFor.put("address", customer.getAddress());
+                jsonFor.put("email", customer.getEmail());
+                jsonFor.put("password", customer.getPassword());
+                jsonFor.put("cpf", customer.getCpf());
+
+                json.put(String.valueOf(keyJson), jsonFor);
+
+                keyJson++;
+            }
+            return json;
+        }
+
+        else{
+            return null;
+        }
+    }
+
+    public static Customer getCustomer(int index, List<Customer> customerList){
+        if(index >= 0 && index < customerList.size()) {
+
+            return customerList.get(index);
+        }
+
+        else{
+            return null;
+        }
+    }
+
+    public static List<Customer> getAllCustomer(List<Customer> customerList){
+        return customerList;
     }
 }
