@@ -5,7 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer; // Criar um servidor
 
-import senac.java.Controllers.CustomerController;
+import senac.java.Controllers.UsersController;
 import senac.java.Controllers.ProductController;
 import senac.java.Controllers.SalesController;
 
@@ -21,7 +21,7 @@ public class WebServer {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080),
                 0);
 
-        HttpHandler userHandler = new CustomerController.ClienteHandler();
+        HttpHandler userHandler = new UsersController.UsersHandler();
         HttpHandler salesHandler = new SalesController.SalesHandler();
         HttpHandler productHandler = new ProductController.ProductsHandler();
 

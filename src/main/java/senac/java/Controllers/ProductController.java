@@ -6,9 +6,7 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 
-import senac.java.Domain.Customer;
 import senac.java.Domain.Product;
-import senac.java.Domain.Sales;
 import senac.java.Services.ResponseEndPoints;
 
 import java.util.ArrayList;

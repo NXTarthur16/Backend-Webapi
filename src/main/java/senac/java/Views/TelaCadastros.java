@@ -2,7 +2,7 @@ package senac.java.Views;
 
 import senac.java.Domain.Product;
 import senac.java.Domain.Sales;
-import senac.java.Domain.Customer;
+import senac.java.Domain.Users;
 import senac.java.Services.Roteamento;
 
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TelaCadastros {
 
     static Scanner sc = new Scanner(System.in);
-    static Customer cliente = new Customer();
+    static Users cliente = new Users();
     static Sales vendedor = new Sales();
     static Product produto = new Product();
 
@@ -48,7 +48,7 @@ public class TelaCadastros {
         System.out.println("Preencha corretamente os dados abaixo: ");
         System.out.println(" ");
         System.out.println("Digite o seu primeiro nome");
-        cliente.name = sc.nextLine();
+        cliente.nome = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite o seu sobrenome");
         cliente.lastName = sc.nextLine();
@@ -70,7 +70,7 @@ public class TelaCadastros {
         System.out.println(" ");
 
         System.out.println("Cadastro de cliente realizado com sucesso:");
-        System.out.println("Nome: " + cliente.name + " " + cliente.lastName);
+        System.out.println("Nome: " + cliente.nome + " " + cliente.lastName);
         System.out.println("Idade: " + cliente.age);
         System.out.println("Endereço: " + cliente.address);
         System.out.println("E-mail: " + cliente.email);
