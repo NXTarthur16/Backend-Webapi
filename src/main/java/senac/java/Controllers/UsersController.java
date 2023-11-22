@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import senac.java.DAL.UserDal;
 import senac.java.Domain.Users;
-import senac.java.Services.Conexao;
 import senac.java.Services.ResponseEndPoints;
 
 import java.io.IOException;
@@ -129,7 +128,7 @@ public class UsersController {
             JSONObject json = new JSONObject(new String(requestBody.readAllBytes()));
             int resp = 0;
 
-            int id = Integer.parseInt("id");
+            int id = Integer.parseInt(json.getString("id"));
 
             resp = userDal.excluirUsuario(id);
 
@@ -153,45 +152,45 @@ public class UsersController {
     }
 
     public static void doPut(HttpExchange exchange) throws IOException{
-//        UserDal userDal = new UserDal();
-//
-//        try(InputStream requestBody = exchange.getRequestBody()){
-//            JSONObject json = new JSONObject(new String(requestBody.readAllBytes()));
-//            int resp = 0;
-//
-//            Users users = new Users(
-//                    json.getString("nome"),
-//                    json.getString("lastName"),
-//                    json.getInt("age"),
-//                    json.getString("address"),
-//                    json.getString("email"),
-//                    json.getString("password"),
-//                    json.getString("cpf"),
-//                    json.getInt("id")
-//            );
-//
-//            usersList.add(users);
-//
-//            resp = userDal.atualizarUsuario(users.nome, users.lastName, users.age,
-//                    users.address, users.email, users.password, users.cpf, users.id);
-//
-//            if(resp == 0){
-//                response = "Houve um problema ao atualizar usuário";
-//            }else{
-//                response = "Usuário atualizado com sucesso";
-//            }
-//
-//            res.enviarResponse(exchange, response, 200);
-//        }catch(Exception e){
-//            response = e.toString();
-//
-//            System.out.println(response);
-//            System.out.println("---------");
-//
-//            res.enviarResponse(exchange, response, 200);
-//        }
-    }
+        UserDal userDal = new UserDal();
 
+        try(InputStream requestBody = exchange.getRequestBody()){
+            JSONObject json = new JSONObject(new String(requestBody.readAllBytes()));
+            int resp = 0;
+
+            int id = Integer.parseInt(json.getString("id"));
+
+            Users users = new Users(
+                    json.getString("nome"),
+                    json.getString("lastName"),
+                    json.getInt("age"),
+                    json.getString("address"),
+                    json.getString("email"),
+                    json.getString("password"),
+                    json.getString("cpf")
+            );
+
+            usersList.add(users);
+
+            resp = userDal.atualizarUsuario(users.nome, users.lastName, users.age,
+                    users.address, users.email, users.password, users.cpf, id);
+
+            if(resp == 0){
+                response = "Houve um problema ao atualizar usuário";
+            }else{
+                response = "Usuário atualizado com sucesso";
+            }
+
+            res.enviarResponse(exchange, response, 200);
+        }catch(Exception e){
+            response = e.toString();
+
+            System.out.println(response);
+            System.out.println("---------");
+
+            res.enviarResponse(exchange, response, 200);
+        }
+    }
 
     public static void doOptions(HttpExchange exchange) throws IOException{
         exchange.sendResponseHeaders(204,-1);
