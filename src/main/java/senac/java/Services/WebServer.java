@@ -44,16 +44,14 @@ public class WebServer {
         server.start();
     }
 
-    private void configureCors(HttpExchange exchange) {
+    private static void configureCors(HttpExchange exchange) {
         Headers headers = exchange.getResponseHeaders();
-        String requestOrigin = exchange.getResponseHeaders().getFirst("Origin");
+        String requestOrigin = exchange.getRequestHeaders().getFirst("Origin");
         if (requestOrigin != null) {
             headers.set("Access-Control-Allow-Origin", requestOrigin);
+            headers.set("Access-Control-Allow-Methods", "GET, OPTIONS, POST, PUT, DELETE");
+            headers.set("Access-Control-Allow-Headers", "Content-Type");
+            headers.set("Access-Control-Allow-Credentials", "true");
         }
-        headers.set("Access-Control-Allow-Origin", "*");
-        headers.set("Access-Control-Allow-Methods", "GET,OPTIONS,POST,PUT,DELETE");
-        headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
-        headers.set("Access-Control-Allow-Credentials", "true");
-        headers.set("Access-Control-Max-Age", "3600");
     }
 }
