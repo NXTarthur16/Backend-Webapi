@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Users {
     int id = 0;
-    public static String nome = "";
+    public static String name = "";
     public static String lastName = "";
     public static int age = 0;
     public static String address = "";
@@ -17,11 +17,11 @@ public class Users {
     public Users(){
     }
 
-    public Users(String nome, String lastName, int age,
+    public Users(String name, String lastName, int age,
                  String address, String email, String password,
                  String cpf){
 
-        this.nome = nome;
+        this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.address = address;
@@ -30,12 +30,12 @@ public class Users {
         this.cpf = cpf;
     }
 
-    public String getNome(){
-        return nome;
+    public String getName(){
+        return name;
     }
 
     public void setName(String name){
-        this.nome = name;
+        this.name = name;
     }
 
     public String getLastName(){
@@ -90,7 +90,7 @@ public class Users {
     public JSONObject toJson(){
         JSONObject json = new JSONObject();
 
-        json.put("name", nome);
+        json.put("name", name);
         json.put("lastName", lastName);
         json.put("age", age);
         json.put("address", address);
@@ -111,7 +111,7 @@ public class Users {
 
                 JSONObject jsonFor = new JSONObject();
 
-                jsonFor.put("name", users.getNome());
+                jsonFor.put("name", users.getName());
                 jsonFor.put("lastName", users.getLastName());
                 jsonFor.put("age", users.getAge());
                 jsonFor.put("address", users.getAddress());

@@ -15,9 +15,9 @@ public class SalesDal {
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=pi";
-            String usuario = "116128412023.1";
-            String senha = "senac@12841";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=pi;trustServerCertificate=true";
+            String usuario = "user";
+            String senha = "123456";
 
             conexao = DriverManager.getConnection(url, usuario, senha);
 
@@ -27,15 +27,16 @@ public class SalesDal {
         }catch(ClassNotFoundException | SQLException e){
             System.out.println("O Erro foi: " + e);
 
-        }finally{
-            try {
-                if (conexao != null && !conexao.isClosed()){
-                    conexao.close();
-                }
-            }catch(SQLException e){
-                System.out.println("O erro no finaly foi: " + e);
-            }
         }
+//        finally{
+//            try {
+//                if (conexao != null && !conexao.isClosed()){
+//                    conexao.close();
+//                }
+//            }catch(SQLException e){
+//                System.out.println("O erro no finaly foi: " + e);
+//            }
+//        }
         return conexao;
     }
 

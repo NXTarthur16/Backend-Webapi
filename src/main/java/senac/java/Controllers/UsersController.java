@@ -55,8 +55,8 @@ public class UsersController {
         if(!getAllFromArray.isEmpty()){
             Users users = new Users();
             for(Users usersJson : getAllFromArray){
-                System.out.println("Nome: " + usersJson.getNome());
-                System.out.println("Sobrenome: " + usersJson.getLastName());
+                System.out.println("Nome: " + usersJson.getName());
+                System.out.println("Sobrename: " + usersJson.getLastName());
                 System.out.println("Idade: " + usersJson.getAge());
                 System.out.println("Endereço: " + usersJson.getAddress());
                 System.out.println("Email: " + usersJson.getEmail());
@@ -90,7 +90,7 @@ public class UsersController {
             int resp = 0;
 
             Users users = new Users(
-                    json.getString("nome"),
+                    json.getString("name"),
                     json.getString("lastName"),
                     json.getInt("age"),
                     json.getString("address"),
@@ -101,7 +101,7 @@ public class UsersController {
 
             usersList.add(users);
 
-            resp = userDal.inserirUsuario(users.nome, users.lastName, users.age,
+            resp = userDal.inserirUsuario(users.name, users.lastName, users.age,
                     users.address, users.email, users.password, users.cpf);
 
             if(resp == 0){
@@ -161,7 +161,7 @@ public class UsersController {
             int id = Integer.parseInt(json.getString("id"));
 
             Users users = new Users(
-                    json.getString("nome"),
+                    json.getString("name"),
                     json.getString("lastName"),
                     json.getInt("age"),
                     json.getString("address"),
@@ -172,7 +172,7 @@ public class UsersController {
 
             usersList.add(users);
 
-            resp = userDal.atualizarUsuario(users.nome, users.lastName, users.age,
+            resp = userDal.atualizarUsuario(users.name, users.lastName, users.age,
                     users.address, users.email, users.password, users.cpf, id);
 
             if(resp == 0){

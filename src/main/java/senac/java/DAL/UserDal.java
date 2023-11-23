@@ -1,7 +1,5 @@
 package senac.java.DAL;
 
-import senac.java.Services.Conexao;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,9 +14,9 @@ public class UserDal {
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=pi";
-            String usuario = "116128412023.1";
-            String senha = "senac@12841";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=pi;trustServerCertificate=true";
+            String usuario = "user";
+            String senha = "123456";
 
             conexao = DriverManager.getConnection(url, usuario, senha);
 
@@ -28,27 +26,28 @@ public class UserDal {
         }catch(ClassNotFoundException | SQLException e){
             System.out.println("O Erro foi: " + e);
 
-        }finally{
-            try {
-                if (conexao != null && !conexao.isClosed()){
-                    conexao.close();
-                }
-            }catch(SQLException e){
-                System.out.println("O erro no finaly foi: " + e);
-            }
         }
+//        finally{
+//            try {
+//                if (conexao != null && !conexao.isClosed()){
+//                    conexao.close();
+//                }
+//            }catch(SQLException e){
+//                System.out.println("O erro no finaly foi: " + e);
+//            }
+//        }
         return conexao;
     }
 
     //Inserir - Create
-    public int inserirUsuario(String nome, String lastName, int age, String address,
+    public int inserirUsuario(String name, String lastName, int age, String address,
                                String email, String password, String cpf) throws SQLException{
-        String sql = "INSERT INTO Users (nome, lastName, age, address, email, password, cpf) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Users (name, lastName, age, address, email, password, cpf) VALUES(?, ?, ?, ?, ?, ?, ?)";
         int linhasAfetadas = 0;
         Connection conexao = conectar();
 
         try(PreparedStatement statement = conectar().prepareStatement(sql)){
-            statement.setString(1, nome);
+            statement.setString(1, name);
             statement.setString(2, lastName);
             statement.setInt(3, age);
             statement.setString(4, address);
@@ -81,7 +80,7 @@ public class UserDal {
 
             while (result.next()){
                 int id = result.getInt("id");
-                String nome = result.getString("nome");
+                String name = result.getString("name");
                 String lastName = result.getString("lastName");
                 int age = result.getInt("age");
                 String address = result.getString("address");
@@ -90,7 +89,7 @@ public class UserDal {
                 String cpf = result.getString("cpf");
 
                 System.out.println("id: " + id);
-                System.out.println("nome: " + nome);
+                System.out.println("name: " + name);
                 System.out.println("lastName: " + lastName);
                 System.out.println("age: " + age);
                 System.out.println("address: " + address);
@@ -108,13 +107,13 @@ public class UserDal {
 
     }
 
-    public int atualizarUsuario(String nome, String lastName, int age, String address,
+    public int atualizarUsuario(String name, String lastName, int age, String address,
                                 String email, String password, String cpf, int id) throws SQLException{
-        String sql = "UPDATE Users SET nome = ?, lastName = ?, age = ?, address = ?, email = ?, password = ?, cpf = ?< WHERE id = ?";
+        String sql = "UPDATE Users SET name = ?, lastName = ?, age = ?, address = ?, email = ?, password = ?, cpf = ?< WHERE id = ?";
         int linhasAfetadas = 0;
 
         try(PreparedStatement statement = conectar().prepareStatement(sql)){
-            statement.setString(1, nome);
+            statement.setString(1, name);
             statement.setString(2, lastName);
             statement.setInt(3, age);
             statement.setString(4, address);

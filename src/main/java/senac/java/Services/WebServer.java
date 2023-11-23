@@ -18,7 +18,7 @@ public class WebServer {
     public void apiServer() throws IOException{
 
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080),
+        HttpServer server = HttpServer.create(new InetSocketAddress(8090),
                 0);
 
         HttpHandler userHandler = new UsersController.UsersHandler();

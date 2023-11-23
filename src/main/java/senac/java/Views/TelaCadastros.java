@@ -35,7 +35,7 @@ public class TelaCadastros {
 
         System.out.println("Cadastro de vendas realizado com sucesso:");
         System.out.println("Nome: " + vendedor.image);
-        System.out.println("Sobrenome: " + vendedor.titulo);
+        System.out.println("Sobrename: " + vendedor.titulo);
         System.out.println("Telefone: " + vendedor.subtitulo);
 
         rota.rotasReturn(resposta);
@@ -47,10 +47,10 @@ public class TelaCadastros {
         System.out.println(" ");
         System.out.println("Preencha corretamente os dados abaixo: ");
         System.out.println(" ");
-        System.out.println("Digite o seu primeiro nome");
-        cliente.nome = sc.nextLine();
+        System.out.println("Digite o seu primeiro name");
+        cliente.name = sc.nextLine();
         System.out.println(" ");
-        System.out.println("Digite o seu sobrenome");
+        System.out.println("Digite o seu sobrename");
         cliente.lastName = sc.nextLine();
         System.out.println(" ");
         System.out.println("Digite a sua idade");
@@ -70,7 +70,7 @@ public class TelaCadastros {
         System.out.println(" ");
 
         System.out.println("Cadastro de cliente realizado com sucesso:");
-        System.out.println("Nome: " + cliente.nome + " " + cliente.lastName);
+        System.out.println("Nome: " + cliente.name + " " + cliente.lastName);
         System.out.println("Idade: " + cliente.age);
         System.out.println("Endereço: " + cliente.address);
         System.out.println("E-mail: " + cliente.email);
@@ -85,7 +85,7 @@ public class TelaCadastros {
         System.out.println(" ");
         System.out.println("Preencha corretamente os dados abaixo: ");
         System.out.println(" ");
-        System.out.println("Digite o nome do seu produto");
+        System.out.println("Digite o name do seu produto");
         produto.pName = sc.nextLine();
         System.out.println("Digite o preço do seu produto");
         produto.pPrice = sc.nextLine();
